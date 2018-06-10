@@ -83,6 +83,13 @@ public class WxPayConfig {
    * p12证书文件内容的字节数组.
    */
   private byte[] keyContent;
+
+  /**
+   * 协议模板id，设置路径见开发步骤
+   * https://pay.weixin.qq.com/wiki/doc/api/pap_sl.php?chapter=17_3
+   */
+  private String planId;
+
   /**
    * 微信支付是否使用仿真测试环境.
    * 默认不使用
