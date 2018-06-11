@@ -1,9 +1,6 @@
 package com.github.binarywang.wxpay.service.impl;
 
-import com.github.binarywang.wxpay.bean.request.ApplyPayRequest;
-import com.github.binarywang.wxpay.bean.request.DeleteContractRequest;
-import com.github.binarywang.wxpay.bean.request.PapOrderQueryRequest;
-import com.github.binarywang.wxpay.bean.request.QueryContractRequest;
+import com.github.binarywang.wxpay.bean.request.*;
 import com.github.binarywang.wxpay.bean.result.*;
 import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.exception.WxPayException;
@@ -22,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PaPPayServiceImpl implements PaPPayService {
 
-  protected final Logger log = LoggerFactory.getLogger(this.getClass());
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
 
   private WxPayService wxPayService;
 
@@ -35,6 +32,25 @@ public class PaPPayServiceImpl implements PaPPayService {
     return wxPayService.getConfig();
   }
 
+  @Override
+  public ContractResult contract(ContractRequest request) throws WxPayException {
+    WxPayConfig config = this.getConfig();
+    request.checkAndSign(config);
+    log.info("签名的xml: " + request.toXML());
+    return ContractResult.newBuilder()
+      .appId(config.getAppId())
+      .mchId(config.getMchId())
+      .subMchId(config.getSubMchId())
+      .planId(config.getPlanId())
+      .contractCode(request.getContractCode())
+      .requestSerial(request.getRequestSerial())
+      .contractDisplayAccount(request.getContractDisplayAccount())
+      .notifyUrl(request.getNotifyUrl())
+      .timestamp(request.getTimestamp())
+      .version(request.getVersion())
+      .sign(request.getSign())
+      .build();
+  }
   /**
    * 签约回调接口
    * @param notifyXml 微信返回xml

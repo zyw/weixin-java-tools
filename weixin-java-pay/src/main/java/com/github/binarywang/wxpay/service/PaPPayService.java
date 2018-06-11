@@ -1,6 +1,7 @@
 package com.github.binarywang.wxpay.service;
 
 import com.github.binarywang.wxpay.bean.request.ApplyPayRequest;
+import com.github.binarywang.wxpay.bean.request.ContractRequest;
 import com.github.binarywang.wxpay.bean.request.DeleteContractRequest;
 import com.github.binarywang.wxpay.bean.request.QueryContractRequest;
 import com.github.binarywang.wxpay.bean.result.*;
@@ -16,12 +17,15 @@ import com.github.binarywang.wxpay.exception.WxPayException;
  * @date 2018/5/18
  */
 public interface PaPPayService {
-
   /**
    * 获取配置.
    */
   WxPayConfig getConfig();
-
+  /**
+   * 签约申请接口
+   * @return 返回签约的对象
+   */
+  ContractResult contract(ContractRequest request) throws WxPayException;
   /**
    * 签约回调接口
    * @return 返回签约的对象
@@ -31,13 +35,10 @@ public interface PaPPayService {
    * 申请支付的接口
    */
   ApplyPayResult applyPay(ApplyPayRequest applyPayRequest) throws WxPayException;
-
-
   /**
    * 支付通知接口
    */
   PayCallBackResult parseOrderNotifyResult(String notifyXml) throws WxPayException;
-
   /**
    * 查询签约结果
    * @param request
@@ -45,7 +46,6 @@ public interface PaPPayService {
    * @throws WxPayException
    */
   QueryContractResult queryContract(QueryContractRequest request) throws WxPayException;
-
   /**
    * 申请解约接口
    * @param request 申请解约参数
@@ -53,7 +53,6 @@ public interface PaPPayService {
    * @throws WxPayException
    */
   DeleteContractResult deleteContract(DeleteContractRequest request) throws WxPayException;
-
   /**
    * 订单查询接口
    */
