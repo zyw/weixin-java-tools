@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class DeleteContractResult extends BaseWxPayResult {
+public class WxDeleteContractResult extends BaseWxPayResult {
     @XStreamAlias("plan_id")
     private String planId;
 

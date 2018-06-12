@@ -14,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @XStreamAlias("xml")
-public class ApplyPayRequest extends BaseWxPayRequest {
+public class WxApplyPayRequest extends BaseWxPayRequest {
 
     /**
      * 商品或支付单简要描述

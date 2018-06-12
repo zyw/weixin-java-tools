@@ -1,10 +1,9 @@
 package com.github.binarywang.wxpay.bean.request;
 
-import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.exception.WxPayException;
-import com.github.binarywang.wxpay.util.SignUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -13,8 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @XStreamAlias("xml")
-public class QueryContractRequest extends BaseWxPayRequest {
-
+public class WxQueryContractRequest extends BaseWxPayRequest {
     /**
      * <pre>
      * 字段名：委托代扣协议id
@@ -38,19 +36,17 @@ public class QueryContractRequest extends BaseWxPayRequest {
      * </pre>
      */
     @XStreamAlias("version")
-    private String version="1.0";
+    private String version;
 
-    @Override
+  @Override
+  protected boolean ignoreNonceStr() {
+    return true;
+  }
+
+  @Override
     protected void checkConstraints() throws WxPayException {
-
-    }
-
-    @Override
-    public void checkAndSign(WxPayConfig config) throws WxPayException {
-        super.checkAndSign(config);
-        this.setNonceStr(null);
-        //设置签名字段的值
-        this.setSign(SignUtils.createSign(this, this.getSignType(), config.getMchKey(),
-                this.ignoreSignType()));
+      if(StringUtils.isEmpty(version)) {
+        this.setVersion("1.0");
+      }
     }
 }

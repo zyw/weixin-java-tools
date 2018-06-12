@@ -200,6 +200,13 @@ public abstract class BaseWxPayRequest implements Serializable {
   }
 
   /**
+   * 签名时，是否忽略NonceStr
+   */
+  protected boolean ignoreNonceStr() {
+    return false;
+  }
+
+  /**
    * <pre>
    * 检查参数，并设置签名
    * 1、检查参数（注意：子类实现需要检查参数的而外功能时，请在调用父类的方法前进行相应判断）
@@ -241,8 +248,10 @@ public abstract class BaseWxPayRequest implements Serializable {
       }
     }
 
-    if (StringUtils.isBlank(getNonceStr())) {
-      this.setNonceStr(String.valueOf(System.currentTimeMillis()));
+    if(!ignoreNonceStr()) {
+      if (StringUtils.isBlank(getNonceStr())) {
+        this.setNonceStr(String.valueOf(System.currentTimeMillis()));
+      }
     }
 
     //设置签名字段的值

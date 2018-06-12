@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class OrderQueryResult extends BaseWxPayResult {
+public class WxOrderQueryResult extends BaseWxPayResult {
     /**
      * 设备号
      */
@@ -98,16 +98,6 @@ public class OrderQueryResult extends BaseWxPayResult {
      */
     @XStreamAlias("coupon_count")
     private String couponCount;
-    /**
-     *代金券或立减优惠ID
-     *//*
-    @XStreamAlias("coupon_id_$n")
-    private String couponId$n;
-    *//**
-     * 单个代金券或立减优惠支付金额
-     *//*
-    @XStreamAlias("coupon_fee_$n")
-    private String couponFee$n;*/
     /**
      * 微信支付订单号
      */

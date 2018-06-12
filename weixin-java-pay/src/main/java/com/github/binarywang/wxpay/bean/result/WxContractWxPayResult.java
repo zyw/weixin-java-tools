@@ -14,7 +14,7 @@ import me.chanjar.weixin.common.util.ToStringUtils;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class ContractWxPayResult extends BaseWxPayResult {
+public class WxContractWxPayResult extends BaseWxPayResult {
     /**
      * 签约协议号
      */
@@ -70,15 +70,6 @@ public class ContractWxPayResult extends BaseWxPayResult {
      */
     @XStreamAlias("request_serial")
     private String requestSerial;
-
-/*    public static ContractWxPayResult fromXML(String xmlString) {
-        XStream xstream = XStreamInitializer.getInstance();
-        xstream.processAnnotations(ContractWxPayResult.class);
-        xstream.registerConverter(new WxPayOrderNotifyResultConverter(xstream.getMapper(), xstream.getReflectionProvider()));
-        ContractWxPayResult result = (ContractWxPayResult) xstream.fromXML(xmlString);
-        result.setXmlString(xmlString);
-        return result;
-    }*/
 
     @Override
     public String toString() {

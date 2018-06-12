@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class QueryContractResult extends BaseWxPayResult {
+public class WxQueryContractResult extends BaseWxPayResult {
 
     /**
      * 0-签约中

@@ -1,9 +1,9 @@
 package com.github.binarywang.wxpay.service;
 
-import com.github.binarywang.wxpay.bean.request.ApplyPayRequest;
-import com.github.binarywang.wxpay.bean.request.ContractRequest;
-import com.github.binarywang.wxpay.bean.request.DeleteContractRequest;
-import com.github.binarywang.wxpay.bean.request.QueryContractRequest;
+import com.github.binarywang.wxpay.bean.request.WxApplyPayRequest;
+import com.github.binarywang.wxpay.bean.request.WxContractRequest;
+import com.github.binarywang.wxpay.bean.request.WxDeleteContractRequest;
+import com.github.binarywang.wxpay.bean.request.WxQueryContractRequest;
 import com.github.binarywang.wxpay.bean.result.*;
 import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.exception.WxPayException;
@@ -25,36 +25,36 @@ public interface PaPPayService {
    * 签约申请接口
    * @return 返回签约的对象
    */
-  ContractResult contract(ContractRequest request) throws WxPayException;
+  WxContractResult contract(WxContractRequest request) throws WxPayException;
   /**
    * 签约回调接口
    * @return 返回签约的对象
    */
-  ContractWxPayResult parseContractNotifyResult(String notifyXml)throws WxPayException;
+  WxContractWxPayResult parseContractNotifyResult(String notifyXml)throws WxPayException;
   /**
    * 申请支付的接口
    */
-  ApplyPayResult applyPay(ApplyPayRequest applyPayRequest) throws WxPayException;
+  WxApplyPayResult applyPay(WxApplyPayRequest applyPayRequest) throws WxPayException;
   /**
    * 支付通知接口
    */
-  PayCallBackResult parseOrderNotifyResult(String notifyXml) throws WxPayException;
+  WxPayCallBackResult parseOrderNotifyResult(String notifyXml) throws WxPayException;
   /**
    * 查询签约结果
    * @param request
    * @return
    * @throws WxPayException
    */
-  QueryContractResult queryContract(QueryContractRequest request) throws WxPayException;
+  WxQueryContractResult queryContract(WxQueryContractRequest request) throws WxPayException;
   /**
    * 申请解约接口
    * @param request 申请解约参数
    * @return
    * @throws WxPayException
    */
-  DeleteContractResult deleteContract(DeleteContractRequest request) throws WxPayException;
+  WxDeleteContractResult deleteContract(WxDeleteContractRequest request) throws WxPayException;
   /**
    * 订单查询接口
    */
-  OrderQueryResult orderQuery(String transactionId) throws WxPayException;
+  WxOrderQueryResult orderQuery(String transactionId) throws WxPayException;
 }

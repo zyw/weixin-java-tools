@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(builderMethodName = "newBuilder")
-public class ContractResult implements Serializable {
+public class WxContractResult implements Serializable {
     /**
      * <pre>
      * 字段名：公众账号ID

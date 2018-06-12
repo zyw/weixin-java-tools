@@ -15,9 +15,7 @@ import me.chanjar.weixin.common.util.ToStringUtils;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class PayCallBackResult extends BaseWxPayResult {
-
-
+public class WxPayCallBackResult extends BaseWxPayResult {
     /**
      * 微信支付分配的终端设备号，
      */
@@ -105,15 +103,6 @@ public class PayCallBackResult extends BaseWxPayResult {
      */
     @XStreamAlias("contract_id")
     private String contractId;
-
-    /*public static PayCallBackResult fromXML(String xmlString) {
-        XStream xstream = XStreamInitializer.getInstance();
-        xstream.processAnnotations(PayCallBackResult.class);
-        xstream.registerConverter(new WxPayOrderNotifyResultConverter(xstream.getMapper(), xstream.getReflectionProvider()));
-        PayCallBackResult result = (PayCallBackResult) xstream.fromXML(xmlString);
-        result.setXmlString(xmlString);
-        return result;
-    }*/
 
     @Override
     public String toString() {
