@@ -1,5 +1,7 @@
 package com.github.binarywang.wxpay.service.impl;
 
+import com.github.binarywang.wxpay.bean.notify.WxContractNotifyResult;
+import com.github.binarywang.wxpay.bean.notify.WxPayPaPNotifyResult;
 import com.github.binarywang.wxpay.bean.request.*;
 import com.github.binarywang.wxpay.bean.result.*;
 import com.github.binarywang.wxpay.config.WxPayConfig;
@@ -57,10 +59,10 @@ public class PaPPayServiceImpl implements PaPPayService {
    * @return 返回签约的对象
    */
   @Override
-  public WxContractWxPayResult parseContractNotifyResult(String notifyXml) throws WxPayException {
+  public WxContractNotifyResult parseContractNotifyResult(String notifyXml) throws WxPayException {
     try {
       log.debug("微信支付签约异步通知请求参数：{}", notifyXml);
-      WxContractWxPayResult result = BaseWxPayResult.fromXML(notifyXml,WxContractWxPayResult.class);
+      WxContractNotifyResult result = BaseWxPayResult.fromXML(notifyXml,WxContractNotifyResult.class);
       log.debug("微信支付签约异步通知请求解析后的对象：{}", result);
       result.checkResult(this.wxPayService, this.wxPayService.getConfig().getSignType(), false);
       return result;
@@ -87,10 +89,10 @@ public class PaPPayServiceImpl implements PaPPayService {
   }
 
   @Override
-  public WxPayCallBackResult parseOrderNotifyResult(String notifyXml) throws WxPayException {
+  public WxPayPaPNotifyResult parseOrderNotifyResult(String notifyXml) throws WxPayException {
     try {
       log.debug("微信支付申请支付异步通知请求参数：{}", notifyXml);
-      WxPayCallBackResult result = BaseWxPayResult.fromXML(notifyXml,WxPayCallBackResult.class);
+      WxPayPaPNotifyResult result = BaseWxPayResult.fromXML(notifyXml,WxPayPaPNotifyResult.class);
       log.debug("微信支付申请支付异步通知请求解析后的对象：{}", result);
       result.checkResult(this.wxPayService, this.wxPayService.getConfig().getSignType(), false);
       return result;

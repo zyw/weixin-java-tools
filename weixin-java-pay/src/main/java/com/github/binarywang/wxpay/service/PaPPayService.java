@@ -1,5 +1,7 @@
 package com.github.binarywang.wxpay.service;
 
+import com.github.binarywang.wxpay.bean.notify.WxContractNotifyResult;
+import com.github.binarywang.wxpay.bean.notify.WxPayPaPNotifyResult;
 import com.github.binarywang.wxpay.bean.request.WxApplyPayRequest;
 import com.github.binarywang.wxpay.bean.request.WxContractRequest;
 import com.github.binarywang.wxpay.bean.request.WxDeleteContractRequest;
@@ -30,7 +32,7 @@ public interface PaPPayService {
    * 签约回调接口
    * @return 返回签约的对象
    */
-  WxContractWxPayResult parseContractNotifyResult(String notifyXml)throws WxPayException;
+  WxContractNotifyResult parseContractNotifyResult(String notifyXml)throws WxPayException;
   /**
    * 申请支付的接口
    */
@@ -38,7 +40,7 @@ public interface PaPPayService {
   /**
    * 支付通知接口
    */
-  WxPayCallBackResult parseOrderNotifyResult(String notifyXml) throws WxPayException;
+  WxPayPaPNotifyResult parseOrderNotifyResult(String notifyXml) throws WxPayException;
   /**
    * 查询签约结果
    * @param request

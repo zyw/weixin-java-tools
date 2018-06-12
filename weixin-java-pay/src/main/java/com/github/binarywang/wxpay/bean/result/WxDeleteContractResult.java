@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @XStreamAlias("xml")
 public class WxDeleteContractResult extends BaseWxPayResult {
-    @XStreamAlias("plan_id")
-    private String planId;
+  @XStreamAlias("plan_id")
+  private String planId;
 
-    @XStreamAlias("contract_id")
-    private String contractId;
+  @XStreamAlias("contract_id")
+  private String contractId;
 
-    @XStreamAlias("contract_code")
-    private String contractCode;
+  @XStreamAlias("contract_code")
+  private String contractCode;
 }

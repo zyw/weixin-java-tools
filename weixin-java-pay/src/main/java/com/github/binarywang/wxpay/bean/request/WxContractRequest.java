@@ -17,26 +17,26 @@ import org.apache.commons.lang3.StringUtils;
 @XStreamAlias("xml")
 public class WxContractRequest extends BaseWxPayRequest {
 
-    @XStreamAlias("plan_id")
-    private String planId;
+  @XStreamAlias("plan_id")
+  private String planId;
 
-    @XStreamAlias("contract_code")
-    private String contractCode;
+  @XStreamAlias("contract_code")
+  private String contractCode;
 
-    @XStreamAlias("request_serial")
-    private String requestSerial;
+  @XStreamAlias("request_serial")
+  private String requestSerial;
 
-    @XStreamAlias("contract_display_account")
-    private String contractDisplayAccount;
+  @XStreamAlias("contract_display_account")
+  private String contractDisplayAccount;
 
-    @XStreamAlias("notify_url")
-    private String notifyUrl;
+  @XStreamAlias("notify_url")
+  private String notifyUrl;
 
-    @XStreamAlias("timestamp")
-    private String timestamp;
+  @XStreamAlias("timestamp")
+  private String timestamp;
 
-    @XStreamAlias("version")
-    private String version;
+  @XStreamAlias("version")
+  private String version;
 
   @Override
   protected boolean ignoreNonceStr() {
@@ -44,9 +44,9 @@ public class WxContractRequest extends BaseWxPayRequest {
   }
 
   @Override
-    protected void checkConstraints() throws WxPayException {
-        if(StringUtils.isEmpty(this.timestamp)) {
-            this.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        }
+  protected void checkConstraints() throws WxPayException {
+    if(StringUtils.isEmpty(this.timestamp)) {
+      this.setTimestamp(String.valueOf(System.currentTimeMillis()));
     }
+  }
 }
