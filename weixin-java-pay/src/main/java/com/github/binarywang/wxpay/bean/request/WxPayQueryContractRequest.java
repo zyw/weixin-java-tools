@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 @NoArgsConstructor
 @AllArgsConstructor
 @XStreamAlias("xml")
-public class WxQueryContractRequest extends BaseWxPayRequest {
+public class WxPayQueryContractRequest extends BaseWxPayRequest {
   /**
    * <pre>
    * 字段名：委托代扣协议id

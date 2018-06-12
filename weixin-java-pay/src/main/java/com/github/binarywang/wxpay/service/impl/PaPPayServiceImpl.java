@@ -35,11 +35,11 @@ public class PaPPayServiceImpl implements PaPPayService {
   }
 
   @Override
-  public WxContractResult contract(WxContractRequest request) throws WxPayException {
+  public WxPayContractResult contract(WxPayContractRequest request) throws WxPayException {
     WxPayConfig config = this.getConfig();
     request.checkAndSign(config);
     log.debug("微信支付签约请求参数: " + request.toXML());
-    return WxContractResult.newBuilder()
+    return WxPayContractResult.newBuilder()
       .appId(config.getAppId())
       .mchId(config.getMchId())
       .subMchId(config.getSubMchId())
@@ -78,12 +78,12 @@ public class PaPPayServiceImpl implements PaPPayService {
    * 申请扣款接口
    */
   @Override
-  public WxApplyPayResult applyPay(WxApplyPayRequest request) throws WxPayException {
+  public WxPayApplyPayResult applyPay(WxPayApplyPayRequest request) throws WxPayException {
     request.checkAndSign(this.wxPayService.getConfig());
     String url = this.wxPayService.getPayBaseUrl() + "/pay/partner/pappayapply";
 
     String responseContent = this.wxPayService.post(url, request.toXML(), false);
-    WxApplyPayResult result = BaseWxPayResult.fromXML(responseContent, WxApplyPayResult.class);
+    WxPayApplyPayResult result = BaseWxPayResult.fromXML(responseContent, WxPayApplyPayResult.class);
     result.checkResult(this.wxPayService, request.getSignType(), true);
     return result;
   }
@@ -106,28 +106,28 @@ public class PaPPayServiceImpl implements PaPPayService {
   }
 
   @Override
-  public WxQueryContractResult queryContract(WxQueryContractRequest request) throws WxPayException {
+  public WxPayQueryContractResult queryContract(WxPayQueryContractRequest request) throws WxPayException {
     String url = this.wxPayService.getPayBaseUrl() + "/papay/partner/querycontract";
     request.checkAndSign(this.wxPayService.getConfig());
     String responseContent = this.wxPayService.post(url, request.toXML(), false);
-    return WxQueryContractResult.fromXML(responseContent,WxQueryContractResult.class);
+    return WxPayQueryContractResult.fromXML(responseContent,WxPayQueryContractResult.class);
   }
 
   @Override
-  public WxDeleteContractResult deleteContract(WxDeleteContractRequest request) throws WxPayException {
+  public WxPayDeleteContractResult deleteContract(WxPayDeleteContractRequest request) throws WxPayException {
     String url = this.wxPayService.getPayBaseUrl() + "/papay/partner/deletecontract";
     request.checkAndSign(this.wxPayService.getConfig());
     String responseContent = this.wxPayService.post(url, request.toXML(), false);
-    return WxDeleteContractResult.fromXML(responseContent,WxDeleteContractResult.class);
+    return WxPayDeleteContractResult.fromXML(responseContent,WxPayDeleteContractResult.class);
   }
 
   @Override
-  public WxOrderQueryResult orderQuery(String outTradeNo) throws WxPayException {
+  public WxPayPaPOrderQueryResult orderQuery(String outTradeNo) throws WxPayException {
     String url = this.wxPayService.getPayBaseUrl() + "/pay/partner/paporderquery";
-    WxPapOrderQueryRequest request = new WxPapOrderQueryRequest();
+    WxPayPaPOrderQueryRequest request = new WxPayPaPOrderQueryRequest();
     request.setOutTradeNo(outTradeNo);
     request.checkAndSign(this.wxPayService.getConfig());
     String responseContent = this.wxPayService.post(url, request.toXML(), false);
-    return WxOrderQueryResult.fromXML(responseContent,WxOrderQueryResult.class);
+    return WxPayPaPOrderQueryResult.fromXML(responseContent,WxPayPaPOrderQueryResult.class);
   }
 }

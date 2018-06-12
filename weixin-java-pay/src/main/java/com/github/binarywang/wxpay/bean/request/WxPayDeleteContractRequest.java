@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 @NoArgsConstructor
 @AllArgsConstructor
 @XStreamAlias("xml")
-public class WxDeleteContractRequest extends BaseWxPayRequest {
+public class WxPayDeleteContractRequest extends BaseWxPayRequest {
   /**
    * <pre>
    * 字段名：模板id

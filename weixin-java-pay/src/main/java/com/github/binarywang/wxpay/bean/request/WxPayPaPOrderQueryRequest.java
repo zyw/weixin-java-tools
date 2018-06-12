@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @XStreamAlias("xml")
-public class WxPapOrderQueryRequest extends BaseWxPayRequest {
+public class WxPayPaPOrderQueryRequest extends BaseWxPayRequest {
   /**
    * <pre>
    * 字段名：微信订单号

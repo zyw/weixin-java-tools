@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @XStreamAlias("xml")
-public class WxOrderQueryResult extends BaseWxPayResult {
+public class WxPayPaPOrderQueryResult extends BaseWxPayResult {
   /**
    * 设备号
    */
